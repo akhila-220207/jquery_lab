@@ -5,19 +5,53 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-
+<!-- <div id="box">
 <p id="para1">hello</p>
+<div>
 <p class="para">world</p>
+</div>
+</div>
 
+<h1>heading</h1>
+<p>first para</p> -->
+
+<!-- //filter selectors
+//first -->
+<p>first</p>
+<p>second</p>
+
+
+<!-- <p class="a">A</p>
+<p class="b">B</p> -->
+
+<!-- attribute selectors -->
+
+<input type="text" name="username1">
+<input type="password">
 
 
 
 </body>
 <script>
     $(document).ready(function(){
-        $("#para1").css("color","red");
-        $(".para").css("color","blue");
+        $("#box > p").css("color","red");
+      $("h1+p").css("color","green")
+      $("h1~p").css("color","orange")
+  $("p:first").css("color","pink")
+  $("p:last").css("color","yellow")
+  $("p:even").css("background","yellow")
+  $("p:odd").css("background","lightblue")
+
+  $("p:not(.a)").css("color","red")
+  $("[name]").css("border","2px solid red")
+$("input[type='password']").css("background","pink");
+$("input[name^='user']").css("color","green")
+$("input[name$='1']").css("background","yellow")
+
+$("input[name*='name1']").css("border","2px solid blue")
+
     });
     </script>
 </html>
