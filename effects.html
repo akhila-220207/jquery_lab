@@ -4,17 +4,138 @@
   <title>jQuery Lab</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    #box {
+      width: 200px;
+      height: 100px;
+      background: lightblue;
+      text-align: center;
+      line-height: 100px;
+      margin: 20px;
+      position: relative;
+    }
+  </style>
 </head>
 <body>
 
-<button id="hidebtn">Hide</button>
-<p id="para">hello effects</p>
+<div id="box">BOX</div>
 
 
+<button id="showBtn">Show</button>
+<button id="hideBtn">Hide</button>
+<button id="toggleBtn">Toggle</button>
+
+<button id="fadeInBtn">Fade In</button>
+<button id="fadeOutBtn">Fade Out</button>
+<button id="fadeToggleBtn">Fade Toggle</button>
+<button id="fadeToBtn">Fade To 0.3</button>
+
+<h3>Sliding Effects</h3>
+<button id="slideDownBtn">Slide Down</button>
+<button id="slideUpBtn">Slide Up</button>
+<button id="slideToggleBtn">Slide Toggle</button>
+
+
+<h3>Custom Animation</h3>
+<button id="moveBtn">Move Right</button>
+<button id="opacityBtn">Change Opacity</button>
+<button id="resizeBtn">Resize</button>
+<button id="allAnimBtn">All Animation</button>
+
+
+<button id="startBtn">Start Animation</button>
+<button id="stopBtn">Stop</button>
+<button id="finishBtn">Finish</button>
+<button id="clearQueueBtn">Clear Queue</button>
+<button id="queueBtn">Add to Queue</button>
+<button id="dequeueBtn">Run Queue</button>
 <script>
-("#hidebtn").click(function(){
- $("#para").hide();
+
+$(document).ready(function(){
+  $("#showBtn").click(function(){
+    $("#box").show();
+  })
+
+  $("#hideBtn").click(function(){
+    $("#box").hide();
+  })
+
+   $("#Btn").click(function(){
+    $("#box").toggle();
+  })
+
+ $("#fadeInBtn").click(function(){ $("#box").fadeIn(); });
+
+  $("#fadeOutBtn").click(function(){ $("#box").fadeOut(); });
+
+   $("#fadeToggleBtn").click(function(){ $("#box").fadeToggle(); });
+
+    $("#fadeToBtn").click(function(){ $("#box").fadeTo(1000,0.3); });
+
+    $("#slideDownBtn").click(function(){ $("#box").slideDown(); });
+    $("#slideUpBtn").click(function(){ $("#box").slideUp(); });
+    $("#slideToggleBtn").click(function(){ $("#box").slideToggle(); });
+
+    $("#moveBtn").click(function(){
+    $("#box").animate({ right: "200px" }, 1000);
+  });
+
+  $("#opacityBtn").click(function(){
+    $("#box").animate({ opacity:0.3}, 1000);
+  });
+  $("#resizeBtn").click(function(){
+    $("#box").animate({ width:"300px",height:"150px" }, 1000);
+  });
+
+$("#allAnimBtn").click(function(){
+  $("#box").animate({ opacity:0.3}, 1000);
+   $("#box").animate({ right: "200px" }, 1000);
+    $("#box").animate({ width:"300px",height:"150px" }, 1000);
+  });
+
+
+$("#startBtn").click(function(){
+  $("#box")
+  .animate({left:"200px"},1000)
+  .delay(500)
+  .animate({top:"100px"},1000)
+  .delay(500)
+  .animate({top:"100px"},1000)
+  .delay(500)
+  .animate({top:"0px"},1000)
+})
+
+$("#stopBtn").click(function(){
+  $("#box").stop()
+})
+
+
+$("#finishBtn").click(function(){
+  $("#box").finish()
+})
+
+$("#clearQueueBtn").click(function(){
+  $("#box").clearQueue()
+})
+
+$("#queueBtn").click(function(){
+  $("#box").queue(function(next){
+    $(this).css("background","green")
+    next();
+  })
+$("#box").queue(function(next){
+      $(this).css("background","blue");
+      next();
+    });
+
+})
+
+
+$("#dequeueBtn").click(function(){
+  $("#box").dequeue()
+})
 });
+
 </script>
 </body>
 </html>

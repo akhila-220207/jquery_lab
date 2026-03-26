@@ -4,16 +4,56 @@
   <title>jQuery Lab</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .highlight{
+        background-color:yellow;
+        color:black;
+    }
+    .dark-theme{
+        background-color: black;
+        color:white;
+    }
+  </style>
 </head>
 <body>
-
-<p id="text">change my style</p>
-<button id="stylebtn">change</button>
+<h2 id="text">style manipulation</h2>
+    <button id="colorbtn">change color</button>
+<button id="addclassbtn">add highlight</button>
+<button id="removeclassbtn">remove highlight</button>
+<button id="toggleclassbtn">toggle highlight</button>
+<button id="checkclassbtn">check highlight</button>
+<button id="themebtn">toggle theme</button>
 
 <script>
-    $("#stylebtn").click(function(){
-        $("#text").css("color","green");
-    });
+
+$(document).ready(function(){
+    $("#colorbtn").click(function(){
+    $("#text").css("color","red");
+  });
+
+   $("#addclassbtn").click(function(){
+    $("#text").addClass("highlight");
+  });
+
+   $("#removeclassbtn").click(function(){
+    $("#text").removeClass("highlight");
+  });
+
+   $("#checkclassbtn").click(function(){
+    if($("#text").hasClass("highlight")){
+        alert("highlight is on")
+    } else{
+        alert("highlight is off")
+    }
+  });
+
+$("#themebtn").click(function(){
+    $("body").toggleClass("dark-theme")
+})
+
+
+
+});
 </script>
 </body>
 </html>

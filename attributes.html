@@ -6,15 +6,37 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- attr() -->
+<img id="myimg" src="image1.jpg" width="150">
+<button id="changeimg">change image</button>
 
-<input type="text" id="name">
-<button id="btn">get value</button>
+<!-- removeatrr -->
+<input type="text" id="inputbox" disabled>
+<button id="enablebtn">enable</button>
+
+<!-- prop() -->
+ <input type="checkbox" id="checkbox">
+ <button id="disable">disable</button>
+ <button id="enable">enable</button>
 
 
+ 
 </body>
 <script>
-$("#btn").click(function(){
- alert($("#name").val());
+$("#changeimg").click(function(){
+  $("#myimg").attr("src","image2.jpg")
 });
+
+$("#enablebtn").click(function(){
+  $("#inputbox").removeAttr("disabled")
+})
+
+$("#disable").click(function(){
+  $("#checkbox").prop("disabled",true)
+})
+$("#disable").click(function(){
+  $("#checkbox").prop("disabled",false)
+})
+
 </script>
 </html>

@@ -3,17 +3,112 @@
 <head>
   <title>jQuery Lab</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+     #box {
+      width: 200px;
+      height: 100px;
+      background: lightgray;
+      text-align: center;
+      line-height: 100px;
+      margin: 20px;
+    }
+  </style>
 </head>
 <body>
-<button id="clickBtn">Click Me</button>
+<h2>Mouse Events</h2>
+<button id="clickbtn">Click</button>
+<button id="dbclickbtn">Double Click</button>
+
+
+<div id="box">Hover Me</div>
+<h2>Keyboard Events</h2>
+<input type="text" id="keyinput" placeholder="type something">
+
+
+<h2>Form Events</h2>
+<form id="myform">
+  <input type="text" id="name" placeholder="enter name">
+  <select id="dropdown">
+    <option>choose</option>
+    <option>option 1</option>
+    <option>option 2</option>
+  </select>
+
+<button type="submit">submit</button>
+
+</form>
+<button id="removeEvent">Remove Click Event</button>
+
+
+
 
 <script>
-$("#clickBtn").click(function(){
-  alert("Button clicked");
-});
-</script>
+  $(document).ready(function(){
+  $("#clickbtn").click(function(){
+    alert("clicked")
+  });
+  $("#dbclickbtn").dblclick(function(){
+    alert("doubleclicked")
+  });
 
-<script src="script.js"></script>
+$("#keyinput").keypress(function(){
+  console.log("key pressed")
+})
+
+$("#keyinput").keydown(function(){
+  console.log("key pressed")
+})
+
+$("#keyinput").keyup(function(){
+  console.log("key pressed")
+})
+
+ $("#box").mouseenter(function(){
+    $(this).css("background","yellow");
+  });
+$("#box").mouseleave(function(){
+  $(this).css("background","lightgray")
+})
+ $("#box").mousedown(function(){
+    $(this).text("mouse down")
+  });
+
+   $("#box").mouseup(function(){
+    $(this).text("mouse up")
+  });
+
+
+  $("#myform").submit(function(e){
+e.preventDefault();
+alert("form submitted");
+  });
+
+  $("#dropdown").change(function(){
+    alert("dropdown changed")
+  })
+
+  $("#name").focus(function(){
+    $(this).css("background","lightblue")
+  })
+
+  $("#name").blur(function(){
+    $(this).css("background","lightblue")
+  })
+  //general event method
+  $("#clickbtn").on("click",function(){
+    console.log("uisng on method")
+  })
+  $("#removeEvent").click(function(){
+    $("#clickbtn").off("click");
+    alert("clcik removed")
+  })
+
+
+
+
+
+
+  });
+</script>
 </body>
 </html>

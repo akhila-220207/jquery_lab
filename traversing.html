@@ -5,16 +5,139 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+  .box{
+    padding:10px;
+    border:1px solid black;
+    margin:5px;
+  }
+  .highlight { background: yellow; }
+</style>
 <body>
 
-<h1>jQuery Lab</h1>
-<div>
-    <p>parent</p>
-    <span> child</span>
-
+  <div id="grandparent" class="box">
+    grandparent
+    <div id="parent" class="box">
+      parent
+      <div id="child1" class="box">child 1</div>
+      <div id="child2" class="box">child 2</div>
+      <div id="child3" class="box">child 3</div>
+    </div>
+  </div>
 </div>
+
+<button id="parentbtn">parent()</button>
+<button id="parentsbtn">parents()</button>
+<button id="parentsuntilbtn">parentsuntil()</button>
+
+<button id="childrenbtn">children()</button>
+<button id="findbtn">find()</button>
+
+<button id="siblingsbtn">siblings()</button>
+<button id="nextbtn">next()</button>
+<button id="nextallbtn">nextall()</button>
+<button id="nextuntilbtn">nextuntil()</button>
+
+<button id="prevBtn">prev()</button>
+<button id="prevallBtn">prevall()</button>
+<button id="prevuntilBtn">prevuntil()</button>
+
+<button id="filterBtn">filter()</button>
+<button id="notBtn">not()</button>
+<button id="firstBtn">first()</button>
+<button id="lastBtn">last()</button>
+<button id="eqBtn">eq()</button>
+
 <script>
-$("span").parent().css("color","red");
+
+$(document).ready(function(){
+
+
+  function reset(){
+    $(".box").removeClass("highlight")
+  }
+
+  // $("#parentbtn").click(function(){
+  //   reset();
+  //   $("#child1").parent().addClass("highlight");
+  // })
+
+  // $("#parentsbtn").click(function(){
+   // reset();
+   // $("#child1").parents().addClass("highlight");
+
+  //})
+
+   $("#parentsuntilbtn").click(function(){
+    reset();
+    $("#child1").parentsuntil("#grandparent").addClass("highlight");
+  })
+
+
+  $("#childrenbtn").click(function(){
+    reset();
+    $("#parent").children().addClass("highlight");
+  })
+
+
+   $("#findbtn").click(function(){
+    reset();
+    $("#grandparent").find("div").addClass("highlight");
+  })
+
+
+  $("#siblingsbtn").click(function(){
+    reset();
+    $("#child2").siblings().addClass("highlight");
+  });
+
+
+
+  $("#nextbtn").click(function(){
+    reset();
+    $("#child1").next().addClass("highlight");
+  })
+   $("#nextallbtn").click(function(){
+    reset();
+    $("#child1").nextAll().addClass("highlight");
+  })
+   $("#nextuntilbtn").click(function(){
+    reset();
+    $("#child1").nextUntil().addClass("highlight");
+  })
+
+
+
+ $("#prevallBtn").click(function(){
+    reset();
+    $("#child3").prevAll().addClass("highlight");
+  })
+
+$("#filterBtn").click(function(){
+  reset();
+  $("#parent div").filter("#child2").addClass("highlight");
+})
+
+$("#eqBtn").click(function(){
+  reset();
+  $("#parent div").eq(1).addClass("highlight");
+})
+$("#lastBtn").click(function(){
+  reset();
+  $("#parent div").last().addClass("highlight");
+})
+$("#notBtn").click(function(){
+  reset();
+  $("#parent div").not("#child2").addClass("highlight");
+})
+
+});
+
+
+
+
+
+
 </script>
 </body>
 </html>
